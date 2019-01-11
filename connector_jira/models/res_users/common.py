@@ -47,6 +47,7 @@ class ResUsers(models.Model):
                 binder = work.component(usage='binder')
                 adapter = work.component(usage='backend.adapter')
                 for user in self:
+                    # import wdb; wdb.set_trace()
                     if binder.to_external(user, wrap=True):
                         continue
                     jira_user = adapter.search(fragment=user.email)

@@ -260,6 +260,7 @@ class JiraImporter(Component):
                 self.external_record = self._get_external_data()
             except IDMissingInBackend:
                 return _('Record does no longer exist in Jira')
+        # import wdb; wdb.set_trace()
         binding = self._get_binding()
         if not binding:
             with self.do_in_new_work_context() as new_work:
@@ -394,6 +395,7 @@ class DelayedBatchImporter(AbstractComponent):
 
     def _import_record(self, record_id, **kwargs):
         """ Delay the import of the records"""
+        print('\n\n', 'self.model', self.model, 'record_id', record_id, '\n\n')
         self.model.with_delay(**kwargs).import_record(
             self.backend_record,
             record_id

@@ -135,6 +135,7 @@ class ProjectProject(models.Model):
 
     @api.multi
     def write(self, values):
+        # import wdb; wdb.set_trace()
         result = super().write(values)
         for record in self:
             if record.jira_exportable and not record.jira_key:
